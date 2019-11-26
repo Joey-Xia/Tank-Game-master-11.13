@@ -14,6 +14,7 @@ public class Game extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
 	private Tank player;
+	private Tank2 player2;
 
 	public void create () {
 		// Loads camera
@@ -25,7 +26,8 @@ public class Game extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 
 		// Creates Player
-		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", 400, 400);
+		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", 200, 400);
+		player2 =  new Tank2("tank.jpg", "canon.jpg","bullet.jpg", 600, 400);
 		}
 
 	public void render () {
@@ -37,6 +39,7 @@ public class Game extends ApplicationAdapter {
 
 		// Runs through the players actions
 		player.step();
+		player2.step();
 
 		// Updates the camera
 		camera.update();

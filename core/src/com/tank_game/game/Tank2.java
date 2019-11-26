@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Vector3;
 
 import java.util.ArrayList;
 
-public class Tank extends ApplicationAdapter {
+public class Tank2 extends ApplicationAdapter {
     private SpriteBatch batch = new SpriteBatch();
 
     public Texture tankImg;
@@ -26,7 +26,7 @@ public class Tank extends ApplicationAdapter {
     int timer = 0; // For counting up
     int bullet_cooldown = 50; // To limit the amount of bullets a tank can shoot each unit time
 
-    public Tank(String tankImgPath, String canonImgPath, String bulletImgPath, int x, int y) {
+    public Tank2(String tankImgPath, String canonImgPath, String bulletImgPath, int x, int y) {
         tankImg = new Texture(Gdx.files.internal(tankImgPath));
         canonImg = new Texture(Gdx.files.internal(canonImgPath));
         bulletImg = new Texture(Gdx.files.internal(bulletImgPath));
@@ -59,7 +59,7 @@ public class Tank extends ApplicationAdapter {
                 angle, 0, 0, 64, 64, false, false);
 
         batch.draw(canonImg, collision.x + 24, collision.y + 24, 8, 8, 16, 64,
-        1, 1, angle, 0, 0, 16, 64, false, false);
+                1, 1, angle, 0, 0, 16, 64, false, false);
 
         batch.end();
     }
@@ -72,15 +72,15 @@ public class Tank extends ApplicationAdapter {
         if(Gdx.input.isKeyPressed(Input.Keys.W)) collision.y += 200 * Gdx.graphics.getDeltaTime();
         if(Gdx.input.isKeyPressed(Input.Keys.S)) collision.y -= 200 * Gdx.graphics.getDeltaTime();
          */
-        if(Gdx.input.isKeyPressed(Input.Keys.A)) angle += 120 * Gdx.graphics.getDeltaTime();
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) angle += 120 * Gdx.graphics.getDeltaTime();
 
-        if(Gdx.input.isKeyPressed(Input.Keys.D)) angle -= 120 * Gdx.graphics.getDeltaTime();
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) angle -= 120 * Gdx.graphics.getDeltaTime();
         float angle_temp = angle;
-        if(Gdx.input.isKeyPressed(Input.Keys.W)){
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
             collision.x -= 200 * Math.sin(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime();
             collision.y += 200 * Math.cos(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime();
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.S)){
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             collision.x += 200 * Math.sin(Math.toRadians(angle)) * Gdx.graphics.getDeltaTime();
             collision.y -= 200 * Math.cos(Math.toRadians(angle)) * Gdx.graphics.getDeltaTime();
         }
@@ -108,7 +108,7 @@ public class Tank extends ApplicationAdapter {
         bullets = new_bullets;
 
         // Keyboard Shoot Bullet
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE) && bullet_cooldown >= 50){
+        if(Gdx.input.isKeyPressed(Input.Keys.M) && bullet_cooldown >= 50){
             float angle_temp = angle;
             float x_temp = collision.x + 32 - 64 * (float)Math.sin(Math.toRadians(angle_temp));
             float y_temp = collision.y + 32 + 64 * (float)Math.cos(Math.toRadians(angle_temp));
