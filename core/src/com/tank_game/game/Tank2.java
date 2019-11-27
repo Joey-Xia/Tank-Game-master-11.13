@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -17,8 +18,10 @@ public class Tank2 extends ApplicationAdapter {
     public Texture tankImg;
     private Texture canonImg;
     public Texture bulletImg;
+    public Texture explodeImg;
     public Rectangle collision;
     public float angle;
+    public boolean dead;
 
     //tank's bullets array list
     public ArrayList<Bullet> bullets;
@@ -26,10 +29,11 @@ public class Tank2 extends ApplicationAdapter {
     int timer = 0; // For counting up
     int bullet_cooldown = 50; // To limit the amount of bullets a tank can shoot each unit time
 
-    public Tank2(String tankImgPath, String canonImgPath, String bulletImgPath, int x, int y) {
+    public Tank2(String tankImgPath, String canonImgPath, String bulletImgPath, String explodeImgPath, int x, int y) {
         tankImg = new Texture(Gdx.files.internal(tankImgPath));
         canonImg = new Texture(Gdx.files.internal(canonImgPath));
         bulletImg = new Texture(Gdx.files.internal(bulletImgPath));
+        explodeImg = new Texture(Gdx.files.internal(explodeImgPath));
         collision = new Rectangle();
         collision.x = x;
         collision.y = y;
@@ -39,6 +43,7 @@ public class Tank2 extends ApplicationAdapter {
         angle = 0;
         //initialize bullets
         bullets = new ArrayList<Bullet>();
+        dead = false;
     }
 
     public void step() {
@@ -50,16 +55,22 @@ public class Tank2 extends ApplicationAdapter {
 
         // Draws all the textures in the game
         batch.begin();
+
         if (!bullets.isEmpty()){
             for (Bullet bullet: bullets) {
                 batch.draw(bulletImg, bullet.collision.x, bullet.collision.y, 10, 10);
             }
         }
+
         batch.draw(tankImg, collision.x, collision.y, 32, 32, 64, 64, 1, 1,
                 angle, 0, 0, 64, 64, false, false);
 
         batch.draw(canonImg, collision.x + 24, collision.y + 24, 8, 8, 16, 64,
                 1, 1, angle, 0, 0, 16, 64, false, false);
+
+        if (dead){
+            batch.draw(explodeImg, collision.x, collision.y, 64, 64);
+        }
 
         batch.end();
     }

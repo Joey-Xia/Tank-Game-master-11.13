@@ -26,8 +26,8 @@ public class Game extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 
 		// Creates Player
-		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", 200, 400);
-		player2 =  new Tank2("tank.jpg", "canon.jpg","bullet.jpg", 600, 400);
+		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 200, 400);
+		player2 =  new Tank2("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 600, 400);
 		}
 
 	public void render () {
@@ -36,6 +36,20 @@ public class Game extends ApplicationAdapter {
 
 		// Esc to exit
 		if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) System.exit(0);
+
+		// Check if either tank is dead
+		for (Bullet bullet: player.bullets){
+			if (player2.collision.overlaps(bullet.collision)){
+				player2.dead = true;
+			}
+			break;
+		}
+		for (Bullet bullet: player2.bullets){
+			if (player.collision.overlaps(bullet.collision)){
+				player.dead = true;
+			}
+			break;
+		}
 
 		// Runs through the players actions
 		player.step();
