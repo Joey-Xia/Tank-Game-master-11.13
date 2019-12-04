@@ -9,12 +9,18 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Intersector;
+
+import java.util.ArrayList;
 
 public class Game extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
 	private Tank player;
 	private Tank2 player2;
+	private Maps maps;
+	private ArrayList<Wall> map;
+	private int map_num = 2;
 
 	public void create () {
 		// Loads camera
@@ -26,9 +32,13 @@ public class Game extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 
 		// Creates Player
-		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 200, 400);
-		player2 =  new Tank2("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 600, 400);
-		}
+		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 200, 700);
+		player2 =  new Tank2("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 600, 100);
+
+		// Creates Maps
+		maps = new Maps();
+		map = maps.getMap(map_num);
+	}
 
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -37,23 +47,20 @@ public class Game extends ApplicationAdapter {
 		// Esc to exit
 		if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) System.exit(0);
 
-		// Check if either tank is dead
-		for (Bullet bullet: player.bullets){
-			if (player2.collision.overlaps(bullet.collision)){
-				player2.dead = true;
-			}
-			break;
-		}
-		for (Bullet bullet: player2.bullets){
-			if (player.collision.overlaps(bullet.collision)){
-				player.dead = true;
-			}
-			break;
+		//draw the walls
+		for (Wall wall: map){
+			wall.step();
 		}
 
+
 		// Runs through the players actions
-		player.step();
-		player2.step();
+		player.step(player2, map);
+		player2.step(player, map);
+
+
+
+
+
 
 		// Updates the camera
 		camera.update();
