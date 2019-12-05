@@ -33,7 +33,7 @@ public class Game extends ApplicationAdapter {
 
 		// Creates Player
 		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 200, 700);
-		player2 =  new Tank2("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 600, 100);
+		player2 =  new Tank2("tank2.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 600, 100);
 
 		// Creates Maps
 		maps = new Maps();

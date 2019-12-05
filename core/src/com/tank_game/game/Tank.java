@@ -20,8 +20,8 @@ public class Tank extends ApplicationAdapter {
     public Texture explodeImg;
     public Polygon collision;
     public float angle;
-    public float width = 32;
-    public float height = 48;
+    public float width = 40;
+    public float height = 60;
     public boolean dead;
 
     public ShapeRenderer sr;
@@ -65,8 +65,8 @@ public class Tank extends ApplicationAdapter {
             }
         }
 
-        batch.draw(tankImg, collision.getX(), collision.getY(), 16, 24, 32, 48, 1, 1,
-                angle, 0, 0, 32, 48, false, false);
+        batch.draw(tankImg, collision.getX(), collision.getY(), width/2, height/2, width, height, 1, 1,
+                angle, 0, 0, 110, 172, false, false);
 
         //batch.draw(canonImg, collision.getX() + 24, collision.getY() + 24, 8, 8, 16, 64,
                 //1, 1, angle, 0, 0, 16, 64, false, false);
