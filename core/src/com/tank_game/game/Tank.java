@@ -3,6 +3,7 @@ package com.tank_game.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -18,11 +19,18 @@ public class Tank extends ApplicationAdapter {
     private Texture canonImg;
     public Texture bulletImg;
     public Texture explodeImg;
+    public Texture menuImg;
+
+    public Sound fire;
+    public Sound move;
+
     public Polygon collision;
     public float angle;
     public float width = 40;
     public float height = 60;
     public boolean dead;
+    public boolean show_menu;
+    long id =0;
 
     public ShapeRenderer sr;
 
@@ -32,11 +40,15 @@ public class Tank extends ApplicationAdapter {
     int timer = 0; // For counting up
     int bullet_cooldown = 50; // To limit the amount of bullets a tank can shoot each unit time
 
-    public Tank(String tankImgPath, String canonImgPath, String bulletImgPath, String explodeImgPath, int x, int y) {
+    public Tank(String tankImgPath, String canonImgPath, String bulletImgPath, String explodeImgPath,
+                String menuImgPath, String fireSdPath, String moveSdPath, int x, int y) {
         tankImg = new Texture(Gdx.files.internal(tankImgPath));
         canonImg = new Texture(Gdx.files.internal(canonImgPath));
         bulletImg = new Texture(Gdx.files.internal(bulletImgPath));
         explodeImg = new Texture(Gdx.files.internal(explodeImgPath));
+        menuImg = new Texture(Gdx.files.internal(menuImgPath));
+        fire = Gdx.audio.newSound(Gdx.files.internal(fireSdPath));
+        move = Gdx.audio.newSound(Gdx.files.internal(moveSdPath));
         collision = new Polygon(new float[]{0,0,width,0,width,height,0,height});
         collision.setOrigin(width/2, height/2);
         collision.setPosition(x, y);
@@ -47,6 +59,7 @@ public class Tank extends ApplicationAdapter {
         bullets = new ArrayList<Bullet>();
         //tank's status
         dead = false;
+        show_menu = true;
     }
 
     public void step(Tank2 player2, ArrayList<Wall> map) {
@@ -65,14 +78,22 @@ public class Tank extends ApplicationAdapter {
             }
         }
 
-        batch.draw(tankImg, collision.getX(), collision.getY(), width/2, height/2, width, height, 1, 1,
-                angle, 0, 0, 110, 172, false, false);
+        if (show_menu){
+            batch.draw(menuImg, 0, 0, 400, 400, 800, 800, 1,1, 0, 0, 0, 800, 800, false, false);
+        }
+
+        //batch.draw(tankImg, collision.getX(), collision.getY(), width/2, height/2, width, height, 1, 1,
+                //angle, 0, 0, 110, 172, false, false);
 
         //batch.draw(canonImg, collision.getX() + 24, collision.getY() + 24, 8, 8, 16, 64,
                 //1, 1, angle, 0, 0, 16, 64, false, false);
 
         if (dead){
             batch.draw(explodeImg, collision.getX()-16, collision.getY()-16, 76, 76);
+        }
+        if(!dead && !show_menu){
+            batch.draw(tankImg, collision.getX(), collision.getY(), width/2, height/2, width, height, 1, 1,
+                    angle, 0, 0, 110, 172, false, false);
         }
 
         batch.end();
@@ -91,6 +112,10 @@ public class Tank extends ApplicationAdapter {
         float temp_angle = angle;
         boolean isoverlap = false;
 
+        if(Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)){
+            show_menu = false;
+        }
+
         if(Gdx.input.isKeyPressed(Input.Keys.A)) {
             angle += 120 * Gdx.graphics.getDeltaTime();
             angle %= 360;
@@ -108,13 +133,29 @@ public class Tank extends ApplicationAdapter {
 
         float angle_temp = angle;
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
+
             collision.translate((float)(-200 * Math.sin(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime()),
                     (float)(200 * Math.cos(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime()));
+            if(id==0) {
+                id = move.play(1.0f);
+                move.setLooping(id, true);
+            }
+
         }
+
         if(Gdx.input.isKeyPressed(Input.Keys.S)){
             collision.translate((float)(200 * Math.sin(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime()),
                     (float)(-200 * Math.cos(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime()));
+
         }
+
+        if(!Gdx.input.isKeyPressed(Input.Keys.S)&&!Gdx.input.isKeyPressed(Input.Keys.W)&&id!=0){
+            move.stop(id);
+            id = 0;
+        }
+
+
+
 
 
         // Restricts the tank to go outside of the window
@@ -190,6 +231,7 @@ public class Tank extends ApplicationAdapter {
             bullets.add(bullet);
             System.out.println("angle: " + bullet.angle);
             bullet_cooldown = 0;
+            fire.play(1.0f);
         }
     }
 }

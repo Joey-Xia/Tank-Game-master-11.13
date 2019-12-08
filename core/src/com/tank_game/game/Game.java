@@ -21,6 +21,7 @@ public class Game extends ApplicationAdapter {
 	private Maps maps;
 	private ArrayList<Wall> map;
 	private int map_num = 2;
+	private Texture texture;
 
 	public void create () {
 		// Loads camera
@@ -32,8 +33,8 @@ public class Game extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 
 		// Creates Player
-		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 200, 700);
-		player2 =  new Tank2("tank2.jpg", "canon.jpg","bullet.jpg", "explode.jpg", 600, 100);
+		player = new Tank("tank.jpg", "canon.jpg","bullet.jpg", "explode.jpg", "MainMenuTankGame.jpg","fire.mp3", "move.mp3",200, 700);
+		player2 =  new Tank2("tank2.jpg", "canon.jpg","bullet.jpg", "explode.jpg", "fire.mp3",600, 100);
 
 		// Creates Maps
 		maps = new Maps();
@@ -52,20 +53,16 @@ public class Game extends ApplicationAdapter {
 			wall.step();
 		}
 
-
 		// Runs through the players actions
 		player.step(player2, map);
 		player2.step(player, map);
-
-
-
-
-
 
 		// Updates the camera
 		camera.update();
 	}
 
 	public void dispose () {
+		player.fire.dispose();
+		player2.fire.dispose();
 	}
 }

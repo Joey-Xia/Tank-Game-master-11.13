@@ -3,6 +3,7 @@ package com.tank_game.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.*;
@@ -18,11 +19,11 @@ public class Tank2 extends ApplicationAdapter {
     public Texture bulletImg;
     public Texture explodeImg;
     public Polygon collision;
+    public Sound fire;
     public float angle;
     public float width = 40;
     public float height = 60;
     public boolean dead;
-
 
     //tank's bullets array list
     public ArrayList<Bullet> bullets;
@@ -30,11 +31,12 @@ public class Tank2 extends ApplicationAdapter {
     int timer = 0; // For counting up
     int bullet_cooldown = 50; // To limit the amount of bullets a tank can shoot each unit time
 
-    public Tank2(String tankImgPath, String canonImgPath, String bulletImgPath, String explodeImgPath, int x, int y) {
+    public Tank2(String tankImgPath, String canonImgPath, String bulletImgPath, String explodeImgPath, String fireSdPath, int x, int y) {
         tankImg = new Texture(Gdx.files.internal(tankImgPath));
         canonImg = new Texture(Gdx.files.internal(canonImgPath));
         bulletImg = new Texture(Gdx.files.internal(bulletImgPath));
         explodeImg = new Texture(Gdx.files.internal(explodeImgPath));
+        fire = Gdx.audio.newSound(Gdx.files.internal(fireSdPath));
         collision = new Polygon(new float[]{0,0,width,0,width,height,0,height});
         collision.setOrigin(width/2, height/2);
         collision.setPosition(x, y);
@@ -63,14 +65,18 @@ public class Tank2 extends ApplicationAdapter {
             }
         }
 
-        batch.draw(tankImg, collision.getX(), collision.getY(), width/2, height/2, width, height, 1, 1,
-                angle, 0, 0, 109, 172, false, false);
+        //batch.draw(tankImg, collision.getX(), collision.getY(), width/2, height/2, width, height, 1, 1,
+                //angle, 0, 0, 109, 172, false, false);
 
         //batch.draw(canonImg, collision.getX() + 24, collision.getY() + 24, 8, 8, 16, 64,
                 //1, 1, angle, 0, 0, 16, 64, false, false);
 
         if (dead){
             batch.draw(explodeImg, collision.getX()-16, collision.getY()-16, 76, 76);
+        }
+        if(!dead && !player.show_menu){
+            batch.draw(tankImg, collision.getX(), collision.getY(), width/2, height/2, width, height, 1, 1,
+                    angle, 0, 0, 109, 172, false, false);
         }
 
         batch.end();
@@ -189,6 +195,7 @@ public class Tank2 extends ApplicationAdapter {
             bullets.add(bullet);
             System.out.println("angle: " + bullet.angle);
             bullet_cooldown = 0;
+            fire.play(1.0f);
         }
     }
 }

@@ -8,14 +8,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tank_game.game.Game;
 
-public class MainMenu extends ApplicationAdapter {
+public class EndMenu extends ApplicationAdapter {
     SpriteBatch batch;
     Texture texture;
     boolean isPressed = false;
 
     public void create() {
         batch = new SpriteBatch();
-        texture = new Texture("MainMenuTankGame.jpg");
+        texture = new Texture("EndMenu.jpg");
     }
 
     public void render() {

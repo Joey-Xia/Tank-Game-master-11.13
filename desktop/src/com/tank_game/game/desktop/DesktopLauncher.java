@@ -3,7 +3,7 @@ package com.tank_game.game.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.tank_game.game.Game;
-import com.tank_game.tankgame.MainMenu;
+import com.tank_game.game.MainMenu;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -11,6 +11,6 @@ public class DesktopLauncher {
 		config.title = "Tank Game";
 		config.width = 800;
 		config.height = 800;
-		new LwjglApplication(new MainMenu(), config);
+		new LwjglApplication(new Game(), config);
 	}
 }
