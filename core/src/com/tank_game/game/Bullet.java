@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Bullet  extends ApplicationAdapter {
+public class Bullet extends ApplicationAdapter {
     private SpriteBatch batch = new SpriteBatch();
 
     public Polygon collision;
