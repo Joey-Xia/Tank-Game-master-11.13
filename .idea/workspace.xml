@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb771ce6-ec00-4c6f-a879-9549ff0c6738" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/tank_game/game/MapsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="bb771ce6-ec00-4c6f-a879-9549ff0c6738" name="Default Changelist" comment="All">
+      <change afterPath="$PROJECT_DIR$/core/src/com/tank_game/game/TankTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/tank_game/game/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/tank_game/game/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/tank_game/game/TankTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +139,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="All" />
+    <option name="LAST_COMMIT_MESSAGE" value="All" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="396" y="126" key="#DesktopLauncher" timestamp="1575839764118">
       <screen x="0" y="23" width="1440" height="877" />
@@ -190,10 +184,14 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="397" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1575846435007" />
-    <state x="496" y="195" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1575845600940">
+    <state x="496" y="195" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1575847950151">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="496" y="195" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.1440.877@0.23.1440.877" timestamp="1575845600940" />
+    <state x="496" y="195" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.1440.877@0.23.1440.877" timestamp="1575847950151" />
+    <state x="378" y="104" width="683" height="714" key="find.popup" timestamp="1575848356374">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="378" y="104" width="683" height="714" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1575848356374" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tank_Game_master_11_13$TankTest.ic" NAME="TankTest Coverage Results" MODIFIED="1575837141894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
