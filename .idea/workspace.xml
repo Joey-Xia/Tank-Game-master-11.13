@@ -2,9 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb771ce6-ec00-4c6f-a879-9549ff0c6738" name="Default Changelist" comment="All">
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/tank_game/game/TankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/tank_game/game/TankTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/EndMenu.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/EndMenu.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/MainMenuTankGame.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/MainMenuTankGame.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/move.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/tank_game/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/tank_game/game/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/tank_game/game/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/tank_game/game/Tank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/tank_game/game/Tank2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/tank_game/game/Tank2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/tank_game/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/tank_game/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/tank_game/game/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/tank_game/game/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/tank_game/game/Tank2.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/tank_game/game/Tank2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/tank_game/game/TankTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,30 +179,30 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="249" y="62" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1575846626555" />
-    <state width="1358" height="217" key="GridCell.Tab.0.bottom" timestamp="1575846407025">
+    <state width="1358" height="217" key="GridCell.Tab.0.bottom" timestamp="1575868101673">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="217" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1575846407025" />
-    <state width="1358" height="217" key="GridCell.Tab.0.center" timestamp="1575846407024">
+    <state width="1358" height="217" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1575868101673" />
+    <state width="1358" height="217" key="GridCell.Tab.0.center" timestamp="1575868101672">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="217" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1575846407024" />
-    <state width="1358" height="217" key="GridCell.Tab.0.left" timestamp="1575846407023">
+    <state width="1358" height="217" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1575868101672" />
+    <state width="1358" height="217" key="GridCell.Tab.0.left" timestamp="1575868101672">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="217" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1575846407023" />
-    <state width="1358" height="217" key="GridCell.Tab.0.right" timestamp="1575846407024">
+    <state width="1358" height="217" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1575868101672" />
+    <state width="1358" height="217" key="GridCell.Tab.0.right" timestamp="1575868101672">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="217" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1575846407024" />
+    <state width="1358" height="217" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1575868101672" />
     <state x="221" y="100" key="SettingsEditor" timestamp="1575846262560">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="221" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1575846262560" />
-    <state x="397" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1575846435007">
+    <state x="397" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1575861786220">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="397" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1575846435007" />
+    <state x="397" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1575861786220" />
     <state x="496" y="195" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1575847950151">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

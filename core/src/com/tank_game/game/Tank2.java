@@ -18,12 +18,20 @@ public class Tank2 extends ApplicationAdapter {
     private Texture canonImg;
     public Texture bulletImg;
     public Texture explodeImg;
+    public Texture regameImg;
     public Polygon collision;
+
     public Sound fire;
+    public Sound exp;
+
     public float angle;
     public float width = 40;
     public float height = 60;
+
     public boolean dead;
+    public boolean stop;
+    public boolean regame;
+    public boolean explode;
 
     //tank's bullets array list
     public ArrayList<Bullet> bullets;
@@ -31,12 +39,14 @@ public class Tank2 extends ApplicationAdapter {
     int timer = 0; // For counting up
     int bullet_cooldown = 50; // To limit the amount of bullets a tank can shoot each unit time
 
-    public Tank2(String tankImgPath, String canonImgPath, String bulletImgPath, String explodeImgPath, String fireSdPath, int x, int y) {
+    public Tank2(String tankImgPath, String canonImgPath, String bulletImgPath, String explodeImgPath, String regameImgPath, String fireSdPath, String explodeSdPath, int x, int y) {
         tankImg = new Texture(Gdx.files.internal(tankImgPath));
         canonImg = new Texture(Gdx.files.internal(canonImgPath));
         bulletImg = new Texture(Gdx.files.internal(bulletImgPath));
         explodeImg = new Texture(Gdx.files.internal(explodeImgPath));
+        regameImg = new Texture(Gdx.files.internal(regameImgPath));
         fire = Gdx.audio.newSound(Gdx.files.internal(fireSdPath));
+        exp = Gdx.audio.newSound(Gdx.files.internal(explodeSdPath));
         collision = new Polygon(new float[]{0,0,width,0,width,height,0,height});
         collision.setOrigin(width/2, height/2);
         collision.setPosition(x, y);
@@ -47,6 +57,9 @@ public class Tank2 extends ApplicationAdapter {
         bullets = new ArrayList<Bullet>();
         //tank's status
         dead = false;
+        stop = true;
+        regame = false;
+        explode = false;
     }
 
     public void step(Tank player, ArrayList<Wall> map) {
@@ -71,12 +84,19 @@ public class Tank2 extends ApplicationAdapter {
         //batch.draw(canonImg, collision.getX() + 24, collision.getY() + 24, 8, 8, 16, 64,
                 //1, 1, angle, 0, 0, 16, 64, false, false);
 
+        if(dead){
+            stop = true;
+        }
+
         if (dead){
             batch.draw(explodeImg, collision.getX()-16, collision.getY()-16, 76, 76);
         }
         if(!dead && !player.show_menu){
             batch.draw(tankImg, collision.getX(), collision.getY(), width/2, height/2, width, height, 1, 1,
                     angle, 0, 0, 109, 172, false, false);
+        }
+        if (regame){
+            batch.draw(regameImg, 0, 0, 400, 400, 800, 800, 1,1, 0, 0, 0, 800, 800, false, false);
         }
 
         batch.end();
@@ -90,18 +110,40 @@ public class Tank2 extends ApplicationAdapter {
         if(Gdx.input.isKeyPressed(Input.Keys.W)) collision.y += 200 * Gdx.graphics.getDeltaTime();
         if(Gdx.input.isKeyPressed(Input.Keys.S)) collision.y -= 200 * Gdx.graphics.getDeltaTime();
          */
+
+        if (dead || player.dead) {
+            regame = true;
+            if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+                regame = false;
+                stop = false;
+                player.stop = false;
+                dead = false;
+                player.dead = false;
+                collision.setPosition(600, 100);
+                player.collision.setPosition(200, 700);
+                angle = 0;
+                player.angle = 0;
+                collision.setRotation(angle);
+                player.collision.setRotation(player.angle);
+                bullets.clear();
+                player.bullets.clear();
+                explode = false;
+                player.explode = false;
+            }
+        }
+
         float temp_x = collision.getX();
         float temp_y = collision.getY();
         float temp_angle = angle;
         boolean isoverlap = false;
 
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && !stop) {
             angle += 120 * Gdx.graphics.getDeltaTime();
             angle %= 360;
             collision.setRotation(angle);
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && !stop) {
             angle -= 120 * Gdx.graphics.getDeltaTime();
             if (angle<0){
                 angle += 360;
@@ -111,11 +153,11 @@ public class Tank2 extends ApplicationAdapter {
         }
 
         float angle_temp = angle;
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+        if(Gdx.input.isKeyPressed(Input.Keys.UP) && !stop){
             collision.translate((float)(-200 * Math.sin(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime()),
                     (float)(200 * Math.cos(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime()));
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN) && !stop){
             collision.translate((float)(200 * Math.sin(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime()),
                     (float)(-200 * Math.cos(Math.toRadians(angle_temp)) * Gdx.graphics.getDeltaTime()));
         }
@@ -185,8 +227,13 @@ public class Tank2 extends ApplicationAdapter {
         }
         bullets = new_bullets;
 
+        if (dead && !explode){
+            exp.play(2.0f);
+            explode = true;
+        }
+
         // Keyboard Shoot Bullet
-        if(Gdx.input.isKeyPressed(Input.Keys.M) && bullet_cooldown >= 50){
+        if(Gdx.input.isKeyPressed(Input.Keys.M) && bullet_cooldown >= 50 && !stop){
             float angle_temp = angle;
             float[] vertices = collision.getTransformedVertices();
             float x_temp = (vertices[4]+vertices[6])/2;
